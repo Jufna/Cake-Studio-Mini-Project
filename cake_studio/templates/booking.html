@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block title %}
+Cake Booking
+{% endblock title %}
+
+{% block content %}
+<center><h1>Order a Cake</h1></center><br><br>
+<form method="post" action="{% url 'booking_success' %}">
+  {% csrf_token %}
+  <div class="form-group">
+    <b><label for="name">Your Name</label></b>
+    <input type="text" class="form-control" id="name" name="name" required>
+  </div>
+  <div class="form-group">
+    <b><label for="cake">Select Cake</label></b>
+    <select class="form-control" id="cake" name="cake" required>
+      {% for c in cakes %}
+        <option value="{{ c.name }}">{{ c.name }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div class="form-group">
+    <b><label for="quantity">Quantity</label></b>
+    <input type="char" class="form-control" id="quantity" name="quantity" min="1" required>
+  </div>
+  <div class="form-group">
+    <b><label for="delivery_date">Delivery Date</label></b>
+    <input type="date" class="form-control" id="delivery_date" name="delivery_date" required>
+  </div>
+  <br><br><br>
+  <center><button type="submit" class="btn btn-primary">Order</button></center>
+</form>
+<br><br>
+{% endblock content %}

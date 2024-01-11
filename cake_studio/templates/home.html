@@ -1,0 +1,29 @@
+{% extends 'base.html'%}
+{%block title%}
+Home page
+{%endblock title%}
+
+{%block content%}
+
+<center><h1>Online Cake Delivery</h1></center><br><br>
+<div class="row">
+
+{%for c in cakes%}
+<div class="col">
+
+
+<div class="card" style="width: 18rem;">
+    <img src="{{c.image_url}}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{c.name}}</h5>
+      <p class="card-text">₹{{c.price}}</p>
+      <p class="card-text">{{c.image}}</p>
+      <p class="card-text">{{c.quantity}}</p>
+      <a href="{% url 'add_to_cart' c.id %}" class="btn btn-primary">Add to cart</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     <a href="{% url 'cake_booking' %}" class="btn btn-primary">Buy Now</a>
+     
+  </div></div></div>
+  {% endfor %}
+{%endblock content%}
+
+
